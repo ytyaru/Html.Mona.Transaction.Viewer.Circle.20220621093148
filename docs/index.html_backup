@@ -105,14 +105,12 @@
 <script src="js/profile-generator.js"></script>
 <script src="js/mona-transaction-client.js"></script>
 <script src="js/mona-transaction-viewer.js"></script>
-<script src="js/circle-svg-generator.js"></script>
 <script src="js/main.js"></script>
 </head>
 <body>
 <h1>モナコイン取引ユーザのアイコンを円形状に並べる</h1>
 <p>名前・アバター画像・サイトURL・紹介文を追加する。プロフィールは<a href="https://ytyaru.github.io/Html.GAS.Address.From.Profile.20220616091305/">mpurseのアドレスとプロフィールを登録する</a>で登録されたものを使う。なければアドレスのみ。</p>
 
-<!--
 <svg width="240" height="240">
   <style>.clip-96{clip-path: circle(96px at 50% 50%);}.clip-64{clip-path: circle(64px at 50% 50%);}</style>
   <rect x="0" y="0" width="240" height="240" style="fill:green" />
@@ -122,17 +120,39 @@
     ]]></style>
   </defs>
   <a href="https://ytyaru.github.io/"><image href="./asset/image/avator.png" width="96" height="96" x="72" y="72" /></a>
+  <!--
+  <defs>
+    <style type="text/css"><![CDATA[
+      .clip { clip-path: circle(50px at center); }
+    ]]></style>
+  </defs>
+  <a href="https://ytyaru.github.io/"><image href="./asset/image/avator.png" width="96" height="96" x="72" y="72" class="clip" /></a>
+  -->
+  <!-- 
+  <clipPath id="clip-circle"><circle cx="120" cy="120" r="48" /></clipPath>
+  <a href="https://ytyaru.github.io/"><image href="./asset/image/avator.png" width="96" height="96" x="72" y="72" clip-path="url(#clip-circle)" /></a>
+  -->
+  <!--
+  <a href="https://ytyaru.github.io/"><image href="./asset/image/avator.png" width="96" height="96" x="72" y="72" style="clip-path: circle(96px at 50% 50%);" /></a>
+  <a href="https://ytyaru.github.io/"><image href="./asset/image/avator.png" width="96" height="96" x="72" y="72" class="clip-96" /></a>
+  -->
+  <!--
+  <a href=""><image href="./asset/image/user/kkrn_icon_user_3.svg" width="64" height="64" x="88" y="24" /></a>
+  <a href=""><image href="./asset/image/user/kkrn_icon_user_3.svg" width="64" height="64" x="200" y="72" /></a>
+  <a href=""><image href="./asset/image/user/kkrn_icon_user_3.svg" width="64" height="64" x="72" y="104" /></a>
+  <a href=""><image href="./asset/image/user/kkrn_icon_user_3.svg" width="64" height="64" x="40" y="72" /></a>
+  -->
   <a href=""><image href="./asset/image/user/kkrn_icon_user_3_resize_min.svg" width="64" height="64" x="88" y="8" /></a>
   <a href=""><image href="./asset/image/user/kkrn_icon_user_3_resize_min.svg" width="64" height="64" x="168" y="88" /></a>
   <a href=""><image href="./asset/image/user/kkrn_icon_user_3_resize_min.svg" width="64" height="64" x="88" y="168" /></a>
   <a href=""><image href="./asset/image/user/kkrn_icon_user_3_resize_min.svg" width="64" height="64" x="8" y="88" /></a>
 </svg>
--->
+
+<!--
 <input id="address" value="" placeholder="モナコインのアドレス">
 <button id="get-transaction" type="button">取引情報を取得する</button>
 <textarea id="response" value="" placeholder="取引情報JSON"></textarea>
 <div id="export-transaction"></div>
-<!--
 -->
 
 <!--
