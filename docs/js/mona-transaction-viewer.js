@@ -101,7 +101,9 @@ class MonaTransactionViewer {
     makePeoples(results, isPay) {
         const datas = []
         for (const r of results) {
-            const addr = r.vout[(this.my == r.vout[0].scriptPubKey.addresses[0]) ? 1 : 0].scriptPubKey.addresses[0]
+            // voutの配列が3つある取引データが存在した。このとき[1]にアドレスがなかった。最初[0]と最後[2]の要素にはアドレスがあった
+            //const addr = r.vout[(this.my == r.vout[0].scriptPubKey.addresses[0]) ? 1 : 0].scriptPubKey.addresses[0]
+            const addr = r.vout[(this.my == r.vout[0].scriptPubKey.addresses[0]) ? r.vout.length-1 : 0].scriptPubKey.addresses[0]
             const i = datas.findIndex(a=>a.address==addr)
             const history = (-1 < i) ? datas[i].history : []
             const sum = (-1 < i) ? datas[i].sum : 0
@@ -130,7 +132,10 @@ class MonaTransactionViewer {
         return received - pay
     }
     isPay(vout) { // この取引情報は支払いであるか（真:支払、偽:受取）
-        return (vout[1].scriptPubKey.addresses[0] == this.my)
+        //console.debug(vout)
+        //console.debug(vout[1].scriptPubKey)
+        //return (vout[1].scriptPubKey.addresses[0] == this.my)
+        return (vout[vout.length-1].scriptPubKey.addresses[0] == this.my) // voutの配列が3つある取引データが存在した。このとき[1]にアドレスがなかった。最初と最後の要素にはアドレスがあった。
     }
     getProfile(address) {
         const i = this.profiles.findIndex(p=>p.address===address)
